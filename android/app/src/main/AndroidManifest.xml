@@ -1,6 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.openuniverse.maketrip">
     <application
-        android:label="maketrip"
+        android:label="MakeTrip"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
