@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
-import '../ui/Travelplanning/travel_planning.dart';
 import '../ui/home/home.dart';
+import '../ui/TopDestination/top_destination.dart';
+import '../ui/Travelplanning/travel_planning.dart';
 
 part 'app_routes.dart';
 
@@ -18,6 +19,10 @@ class AppPages {
     GetPage(
       name: _Paths.travelPlanningPage,
       page: () => const TravelPlanningPage(),
+    ),
+    GetPage(
+      name: _Paths.topDestinationPage,
+      page: () => const TopDestinationPage(),
     ),
   ];
 }

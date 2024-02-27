@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../config/constant/font_constant.dart';
 import '../../../config/constant/color_constant.dart';
@@ -199,6 +200,101 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             const SizedBox(height: 10)
                           ],
                         ),
+                      ),
+                      const SizedBox(height: 5),
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 15),
+                              const Text(
+                                "Upgrade to Pro",
+                                style: TextStyle(
+                                    color: kBorderColor,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const Row(
+                                children: [
+                                  Text(
+                                    "14.9",
+                                    style: TextStyle(
+                                        color: kBorderColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "/Lifestyle",
+                                    style: TextStyle(
+                                        color: Color(0xFFACA8A8), fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Build \$178.8/Year",
+                                    style: TextStyle(
+                                      color: ksecondaryColor,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Container(
+                                    height: 30,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      gradient: const LinearGradient(
+                                          colors: [
+                                            Color(0xFFF894A7),
+                                            Color(0xFF9DD9F6),
+                                          ],
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                          tileMode: TileMode.repeated),
+                                    ),
+                                    child:
+                                        const Center(child: Text("25% Save")),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 15),
+                              GestureDetector(
+                                onTap: () {
+                                  bottomSheetForUpgradeToPro();
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: Get.width,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color: kBorderColor, width: 1)),
+                                  child: const Center(
+                                    child: Text(
+                                      "Get access forever!",
+                                      style: TextStyle(
+                                          color: kBorderColor, fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 18),
+                              buildUpgradetoProText("Unlimited Slides"),
+                              buildUpgradetoProText("AI Content Generation"),
+                              buildUpgradetoProText("Export to PDF, JPG, PPT"),
+                              buildUpgradetoProText("Unlimited Templates"),
+                              buildUpgradetoProText(
+                                  "Share and publish anywhere"),
+                              buildUpgradetoProText("AI Image Generation"),
+                              buildUpgradetoProText("Upload custom image"),
+                              const SizedBox(height: 10)
+                            ],
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -294,6 +390,243 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
           ],
         ),
       ],
+    );
+  }
+
+  bottomSheetForUpgradeToPro() {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: kBackGroundColor,
+      builder: (context) {
+        return Wrap(
+          children: [
+            const Center(
+              child: ImageIcon(
+                AssetImage("assets/icons/line.png"),
+                size: 30,
+                color: Color(0XffBFC5CC),
+              ),
+            ),
+            Theme(
+              data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+              ),
+              child: SizedBox(
+                height: 900,
+                width: Get.width,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "One-time payment. No subscription",
+                        style: TextStyle(
+                            color: kBorderColor,
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        color: const Color(0xFF03CEA4),
+                        child: const Text(
+                          "Lifetime license",
+                          style: TextStyle(
+                              color: kBorderColor,
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        "Unloack the full potential for your trips:",
+                        style: TextStyle(color: ksecondaryColor, fontSize: 14),
+                      ),
+                      const SizedBox(height: 10),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "\$14.9",
+                            style: TextStyle(
+                                color: kBorderColor,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "/Lifetime",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      const Center(
+                        child: SizedBox(
+                          width: 300,
+                          child: Divider(
+                            thickness: 0.8,
+                            color: kDividerColor,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Visualize all your",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "created trips",
+                            style: TextStyle(
+                              color: kButtonColor,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Save to your favourites",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "unlimited",
+                            style: TextStyle(
+                              color: kButtonColor,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "trips",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Save as",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "PDF, spreadsheet, and other formats",
+                            style: TextStyle(
+                              color: kButtonColor,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Get the",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "best directions",
+                            style: TextStyle(
+                              color: kButtonColor,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "according to your transportation",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Faster",
+                            style: TextStyle(
+                              color: kButtonColor,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "responses",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Unlimited",
+                            style: TextStyle(
+                              color: kButtonColor,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "access",
+                            style:
+                                TextStyle(color: ksecondaryColor, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25.0),
+                          child: CupertinoButton(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 10, bottom: 10),
+                              color: kButtonColor,
+                              child: const Text(
+                                "Get access forever!",
+                                style: TextStyle(
+                                    color: kBorderColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {}),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -595,9 +928,9 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                   width: 22, height: 22),
                             ),
                           ),
-                          SizedBox(width: 10),
-                          Text("PDF"),
-                          SizedBox(width: 70),
+                          const SizedBox(width: 10),
+                          const Text("PDF"),
+                          const SizedBox(width: 70),
                           const SizedBox(width: 15),
                           Container(
                             decoration: BoxDecoration(
@@ -610,8 +943,8 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                   width: 26, height: 26),
                             ),
                           ),
-                          SizedBox(width: 10),
-                          Text("PPT"),
+                          const SizedBox(width: 10),
+                          const Text("PPT"),
                         ],
                       )
                     ],
@@ -622,6 +955,26 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
           ],
         );
       },
+    );
+  }
+
+  buildUpgradetoProText(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.check,
+            size: 18,
+            color: kBorderColor,
+          ),
+          const SizedBox(width: 5),
+          Text(
+            text,
+            style: const TextStyle(color: ksecondaryColor, fontSize: 16),
+          ),
+        ],
+      ),
     );
   }
 

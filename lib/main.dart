@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'app/routes/app_pages.dart';
@@ -29,9 +29,6 @@ class MyApp extends StatelessWidget {
       theme: Provider.of<ThemeProvider>(context, listen: false).getTheme(),
       initialRoute: Routes.homePage,
       getPages: AppPages.routes,
-      // initialBinding: BindingsBuilder(() {
-      //   networkController.checkInitialConnectivity();
-      // }),
     );
   }
 }

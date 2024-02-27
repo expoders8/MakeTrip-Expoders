@@ -4,7 +4,7 @@ class TranslateRightAnimation extends StatelessWidget {
   const TranslateRightAnimation({
     super.key,
     required this.child,
-    this.duration = const Duration(milliseconds: 1500),
+    this.duration = const Duration(milliseconds: 1000),
   });
 
   final Widget child;

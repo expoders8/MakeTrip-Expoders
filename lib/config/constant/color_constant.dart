@@ -6,7 +6,7 @@ const kAppBackGround1Color = Color(0xFFE2EAFB);
 const kAppBackGround2Color = Color(0xFFFAD4B9);
 const ksecondaryColor = Color(0xFF787878);
 const kHintTextStyleColor = Color(0x99000000);
-const kButtonColor = Color(0xEF288C82);
+const kButtonColor = Color(0xEF03CEA4);
 const kButtonSecondaryColor = Color(0x8EFF0000);
 const kErrorColor = Color(0xFFFF2C1D);
 const kBorderColor = Color(0xFF000000);
@@ -14,7 +14,7 @@ const kDividerColor = Color(0xFFC9C9C9);
 
 const kBackGroundColor = Color(0XFFF4F6F7);
 const kPrimaryColor = Color(0XFF153165);
-const kTextSecondaryColor = Color(0xFFADBBD6);
+const kTextSecondaryColor = Color(0xFF0EB8A8);
 const kCardColor = Color.fromARGB(235, 255, 255, 255);
 const kDottedBorderColor = Color(0Xff707070);
 
