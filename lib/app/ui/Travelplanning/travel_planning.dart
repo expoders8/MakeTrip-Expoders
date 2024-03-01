@@ -202,100 +202,6 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                         ),
                       ),
                       const SizedBox(height: 5),
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 15),
-                              const Text(
-                                "Upgrade to Pro",
-                                style: TextStyle(
-                                    color: kBorderColor,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const Row(
-                                children: [
-                                  Text(
-                                    "14.9",
-                                    style: TextStyle(
-                                        color: kBorderColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "/Lifestyle",
-                                    style: TextStyle(
-                                        color: Color(0xFFACA8A8), fontSize: 15),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Text(
-                                    "Build \$178.8/Year",
-                                    style: TextStyle(
-                                      color: ksecondaryColor,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Container(
-                                    height: 30,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      gradient: const LinearGradient(
-                                          colors: [
-                                            Color(0xFFF894A7),
-                                            Color(0xFF9DD9F6),
-                                          ],
-                                          begin: Alignment.centerLeft,
-                                          end: Alignment.centerRight,
-                                          tileMode: TileMode.repeated),
-                                    ),
-                                    child:
-                                        const Center(child: Text("25% Save")),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(height: 15),
-                              GestureDetector(
-                                onTap: () {
-                                  bottomSheetForUpgradeToPro();
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: Get.width,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border: Border.all(
-                                          color: kBorderColor, width: 1)),
-                                  child: const Center(
-                                    child: Text(
-                                      "Get access forever!",
-                                      style: TextStyle(
-                                          color: kBorderColor, fontSize: 16),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 18),
-                              buildUpgradetoProText("Unlimited Slides"),
-                              buildUpgradetoProText("AI Content Generation"),
-                              buildUpgradetoProText("Export to PDF, JPG, PPT"),
-                              buildUpgradetoProText("Unlimited Templates"),
-                              buildUpgradetoProText(
-                                  "Share and publish anywhere"),
-                              buildUpgradetoProText("AI Image Generation"),
-                              buildUpgradetoProText("Upload custom image"),
-                              const SizedBox(height: 10)
-                            ],
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ],
@@ -955,26 +861,6 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
           ],
         );
       },
-    );
-  }
-
-  buildUpgradetoProText(String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
-      child: Row(
-        children: [
-          const Icon(
-            Icons.check,
-            size: 18,
-            color: kBorderColor,
-          ),
-          const SizedBox(width: 5),
-          Text(
-            text,
-            style: const TextStyle(color: ksecondaryColor, fontSize: 16),
-          ),
-        ],
-      ),
     );
   }
 

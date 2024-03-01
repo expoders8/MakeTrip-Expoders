@@ -16,8 +16,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String selectedName = "", selectedTab = "", selectedTab2 = "";
+  bool multipalDestination = false,
+      activeStep1 = true,
+      activeStep2 = false,
+      activeStep3 = false;
 
-  final ScrollController _scrollController = ScrollController();
+  FocusNode focusNode1 = FocusNode();
+  FocusNode focusNode2 = FocusNode();
+  FocusNode focusNode3 = FocusNode();
+  FocusNode focusNode4 = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +47,9 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.cover,
               )),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.loginPage);
+            },
           ),
         ],
         flexibleSpace: Container(
@@ -64,96 +73,212 @@ class _HomePageState extends State<HomePage> {
               tileMode: TileMode.repeated),
         ),
         child: SingleChildScrollView(
-          controller: _scrollController,
           child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Card(
-                    child: SizedBox(
-                      height: 150,
-                      width: size.width,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 7),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 13.0),
-                            child: Text(
-                              "Top Destination itinerary",
-                              style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 20,
-                              ),
+                  multipalDestination
+                      ? Card(
+                          child: SizedBox(
+                            width: size.width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 7),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 13.0),
+                                  child: Text(
+                                    "Top Destination itinerary",
+                                    style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            buildCardWidget(
+                                                "assets/images/Rectangle8.png",
+                                                "London",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle9.png",
+                                                "Paris",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle10.png",
+                                                "New York",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle11.png",
+                                                "Mumbai",
+                                                false,
+                                                Icons.add),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            buildCardWidget(
+                                                "assets/images/Rectangle10.png",
+                                                "New York",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle11.png",
+                                                "Mumbai",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle12.png",
+                                                "Amsterdam",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle13.png",
+                                                "Nepal",
+                                                false,
+                                                Icons.add),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            buildCardWidget(
+                                                "assets/images/Rectangle10.png",
+                                                "New York",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle11.png",
+                                                "Mumbai",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle12.png",
+                                                "Amsterdam",
+                                                false,
+                                                Icons.add),
+                                            buildCardWidget(
+                                                "assets/images/Rectangle13.png",
+                                                "Nepal",
+                                                false,
+                                                Icons.add),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  buildCardWidget(
-                                      "assets/images/Rectangle8.png",
-                                      "London",
-                                      false,
-                                      Icons.add),
-                                  buildCardWidget(
-                                      "assets/images/Rectangle9.png",
-                                      "Paris",
-                                      false,
-                                      Icons.add),
-                                  buildCardWidget(
-                                      "assets/images/Rectangle10.png",
-                                      "New York",
-                                      false,
-                                      Icons.add),
-                                  buildCardWidget(
-                                      "assets/images/Rectangle11.png",
-                                      "Mumbai",
-                                      false,
-                                      Icons.add),
-                                  buildCardWidget(
-                                      "assets/images/Rectangle12.png",
-                                      "Amsterdam",
-                                      false,
-                                      Icons.add),
-                                  buildCardWidget(
-                                      "assets/images/Rectangle13.png",
-                                      "Nepal",
-                                      false,
-                                      Icons.add),
-                                  buildCardWidget(
-                                      "assets/images/Rectangle13.png",
-                                      "23+ More",
-                                      true,
-                                      Icons.add),
-                                ],
-                              ),
+                        )
+                      : Card(
+                          child: SizedBox(
+                            height: 150,
+                            width: size.width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 7),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 13.0),
+                                  child: Text(
+                                    "Top Destination itinerary",
+                                    style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        buildCardWidget(
+                                            "assets/images/Rectangle8.png",
+                                            "London",
+                                            false,
+                                            Icons.add),
+                                        buildCardWidget(
+                                            "assets/images/Rectangle9.png",
+                                            "Paris",
+                                            false,
+                                            Icons.add),
+                                        buildCardWidget(
+                                            "assets/images/Rectangle10.png",
+                                            "New York",
+                                            false,
+                                            Icons.add),
+                                        buildCardWidget(
+                                            "assets/images/Rectangle11.png",
+                                            "Mumbai",
+                                            false,
+                                            Icons.add),
+                                        buildCardWidget(
+                                            "assets/images/Rectangle12.png",
+                                            "Amsterdam",
+                                            false,
+                                            Icons.add),
+                                        buildCardWidget(
+                                            "assets/images/Rectangle13.png",
+                                            "Nepal",
+                                            false,
+                                            Icons.add),
+                                        buildCardWidget(
+                                            "assets/images/Rectangle13.png",
+                                            "23+ More",
+                                            true,
+                                            Icons.add),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  buildStapWidget("01", "Which city are you excited to explore",
-                      "assets/icons/Frame1584.png", true, true),
+                        ),
+                  const SizedBox(height: 45),
+                  buildStapWidget(
+                      "01",
+                      "Which city are you excited to explore",
+                      "assets/icons/Frame1584.png",
+                      true,
+                      activeStep1 ? true : false),
                   buildStapWidget(
                       "02",
                       "How many days are you planning to stay?",
                       "assets/icons/Frame1586.png",
                       true,
-                      false),
+                      activeStep2 ? true : false),
                   buildStapWidget(
                       "03",
                       "Would you be comfortable sharing budget for this trip?",
                       "assets/icons/Frame1592.png",
                       true,
-                      false),
+                      activeStep3 ? true : false),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
                     child: Row(
@@ -369,7 +494,7 @@ class _HomePageState extends State<HomePage> {
                                                         const SizedBox(
                                                             width: 5),
                                                         buildSecondeTabWidget(
-                                                            "assets/icons/image4.png",
+                                                            "assets/icons/Group1137.png",
                                                             "Car"),
                                                         const SizedBox(
                                                             width: 5),
@@ -543,9 +668,9 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 );
                                 await Future.delayed(
-                                    const Duration(seconds: 8));
+                                    const Duration(seconds: 4));
                                 Get.back();
-                                Get.toNamed(Routes.travelPlanningPage);
+                                Get.toNamed(Routes.upgradeToProPage);
                               }),
                         ),
                         const SizedBox(height: 5),
@@ -601,6 +726,13 @@ class _HomePageState extends State<HomePage> {
                   clipBehavior: Clip.none,
                   children: [
                     Card(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: nextbutton ? kBorderColor : kCardColor,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Column(
@@ -612,7 +744,9 @@ class _HomePageState extends State<HomePage> {
                               child: Row(
                                 children: [
                                   SizedBox(
-                                    width: size.width - 150,
+                                    width: nextbutton
+                                        ? size.width - 150
+                                        : size.width - 85,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -632,6 +766,14 @@ class _HomePageState extends State<HomePage> {
                                           width: size.width - 100,
                                           height: 30,
                                           child: TextFormField(
+                                            autofocus: true,
+                                            focusNode: step == "01"
+                                                ? focusNode1
+                                                : step == "02"
+                                                    ? focusNode2
+                                                    : step == "03"
+                                                        ? focusNode3
+                                                        : focusNode4,
                                             decoration: InputDecoration(
                                               hintText: step == "01"
                                                   ? "London"
@@ -658,19 +800,46 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
+                                  SizedBox(width: nextbutton ? 10 : 0),
                                   nextbutton
-                                      ? Container(
-                                          height: 50,
-                                          width: 50,
-                                          decoration: BoxDecoration(
-                                              color: kBorderColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(5)),
-                                          child: Center(
-                                            child: Text(
-                                              "NEXT",
-                                              style:
-                                                  TextStyle(color: kWhiteColor),
+                                      ? GestureDetector(
+                                          onTap: () {
+                                            if (step == "01") {
+                                              setState(() {
+                                                activeStep2 = true;
+                                                activeStep1 = false;
+                                                FocusScope.of(context)
+                                                    .requestFocus(focusNode2);
+                                              });
+                                            } else if (step == "02") {
+                                              setState(() {
+                                                activeStep3 = true;
+                                                activeStep2 = false;
+                                                FocusScope.of(context)
+                                                    .requestFocus(focusNode3);
+                                              });
+                                            } else if (step == "03") {
+                                              setState(() {
+                                                activeStep3 = false;
+                                                FocusScope.of(context)
+                                                    .requestFocus(focusNode4);
+                                                selectedTab = "City Explorer";
+                                              });
+                                            }
+                                          },
+                                          child: Container(
+                                            height: 50,
+                                            width: 50,
+                                            decoration: BoxDecoration(
+                                                color: kBorderColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
+                                            child: const Center(
+                                              child: Text(
+                                                "NEXT",
+                                                style: TextStyle(
+                                                    color: kWhiteColor),
+                                              ),
                                             ),
                                           ),
                                         )
@@ -722,17 +891,17 @@ class _HomePageState extends State<HomePage> {
                     : const Color(0xFFD2D2D2),
                 width: 1)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 2.5, vertical: 5),
           child: Row(
             children: [
               Image.asset(
                 image,
-                scale: 1.5,
+                scale: 1.4,
               ),
-              const SizedBox(width: 3.5),
+              const SizedBox(width: 5),
               Text(
                 name,
-                style: const TextStyle(fontSize: 10),
+                style: const TextStyle(fontSize: 9.4),
               )
             ],
           ),
@@ -758,12 +927,15 @@ class _HomePageState extends State<HomePage> {
                     : const Color(0xFFD2D2D2),
                 width: 1)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 6),
           child: Row(
             children: [
               Image.asset(
                 image,
-                scale: 1,
+                height: 20,
+                width: 20,
+                fit: BoxFit.cover,
+                // scale: 0.5,
               ),
               const SizedBox(width: 5),
               Text(
@@ -781,11 +953,17 @@ class _HomePageState extends State<HomePage> {
     return GestureDetector(
       onTap: () {
         if (name == "23+ More") {
-          Get.toNamed(Routes.topDestinationPage);
+          // Get.toNamed(Routes.topDestinationPage);
+          setState(() {
+            selectedName = name;
+            multipalDestination = true;
+          });
+        } else {
+          setState(() {
+            selectedName = name;
+            multipalDestination = false;
+          });
         }
-        setState(() {
-          selectedName = name;
-        });
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
