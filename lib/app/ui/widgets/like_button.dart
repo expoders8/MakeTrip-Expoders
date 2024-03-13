@@ -70,14 +70,14 @@ class _LikeButtonState extends State<LikeButton> {
                   )
                 : Image.asset(
                     "assets/icons/disLike.png",
-                    color: kBorderColor,
+                    color: kPrimaryColor,
                   ),
           )
 
           // ImageIcon(
           //   const AssetImage("assets/icons/like.png"),
           //   size: 18,
-          //   color: getIsLikedState ? const Color(0XFFDA1643) : kBorderColor,
+          //   color: getIsLikedState ? const Color(0XFFDA1643) : kPrimaryColor,
           // ),
           ),
     );

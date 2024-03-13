@@ -65,7 +65,7 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
                   "Unlock the full potential \nfor your trips",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: kBorderColor,
+                      color: kPrimaryColor,
                       fontFamily: kFuturaPTBold,
                       fontSize: 25),
                 ),
@@ -73,7 +73,7 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
                 SizedBox(
                   width: Get.width,
                   child: Card(
-                    color: kBorderColor,
+                    color: kPrimaryColor,
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
@@ -173,7 +173,7 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
                         const Text(
                           "Upgrade to Pro",
                           style: TextStyle(
-                              color: kBorderColor,
+                              color: kPrimaryColor,
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
@@ -182,7 +182,7 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
                             Text(
                               "14.9",
                               style: TextStyle(
-                                  color: kBorderColor,
+                                  color: kPrimaryColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -232,12 +232,12 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border:
-                                    Border.all(color: kBorderColor, width: 1)),
+                                    Border.all(color: kPrimaryColor, width: 1)),
                             child: const Center(
                               child: Text(
                                 "Get access forever!",
                                 style: TextStyle(
-                                    color: kBorderColor, fontSize: 16),
+                                    color: kPrimaryColor, fontSize: 16),
                               ),
                             ),
                           ),
@@ -277,12 +277,12 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
                 border: Border.all(
-                    color: checkFild ? kWhiteColor : kBorderColor, width: 0.5),
+                    color: checkFild ? kWhiteColor : kPrimaryColor, width: 0.5),
                 borderRadius: BorderRadius.circular(25)),
             child: Icon(
               Icons.check,
               size: 16,
-              color: checkFild ? kWhiteColor : kBorderColor,
+              color: checkFild ? kWhiteColor : kPrimaryColor,
             ),
           ),
           const SizedBox(width: 10),

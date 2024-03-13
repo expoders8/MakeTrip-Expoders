@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:maketrip/app/routes/app_pages.dart';
 
 import '../widgets/like_button.dart';
 import '../../../config/constant/color_constant.dart';
@@ -219,106 +220,111 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
 
   buildCardWidget(String image, String country, String city, String location,
       String money) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        elevation: 6,
-        shadowColor: const Color.fromARGB(50, 0, 0, 0),
-        child: Container(
-          decoration: BoxDecoration(
-              color: kWhiteColor, borderRadius: BorderRadius.circular(4)),
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Image.asset(
-                    image,
-                    fit: BoxFit.cover,
-                    width: Get.width,
-                    height: 220,
-                  ),
-                  const Positioned(
-                      top: 19,
-                      right: 19,
-                      child: LikeButton(
-                        isLiked: false,
-                        campaignId: "",
-                      )),
-                  Positioned(
-                      bottom: -15,
-                      right: 20,
-                      child: Container(
-                        width: 100,
-                        height: 35,
-                        decoration: BoxDecoration(
-                            color: kTextSecondaryColor,
-                            borderRadius: BorderRadius.circular(4)),
-                        child: const Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.calendar_month_outlined,
-                              color: kWhiteColor,
-                              size: 16,
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              "9 Days TOur",
-                              style:
-                                  TextStyle(color: kWhiteColor, fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 15),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    country,
-                    style: const TextStyle(
-                        color: kTextSecondaryColor, fontSize: 19),
-                  ),
-                  Text(city,
-                      style:
-                          const TextStyle(color: kBorderColor, fontSize: 22)),
-                  const Text("Star"),
-                  Text(
-                    location,
-                    style:
-                        const TextStyle(color: ksecondaryColor, fontSize: 15),
-                  ),
-                  const SizedBox(height: 10),
-                  const Divider(
-                    thickness: 0.8,
-                    color: kDividerColor,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(money,
-                          style: const TextStyle(
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.tripDetailsPage);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 6,
+          shadowColor: const Color.fromARGB(50, 0, 0, 0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: kWhiteColor, borderRadius: BorderRadius.circular(4)),
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Image.asset(
+                      image,
+                      fit: BoxFit.cover,
+                      width: Get.width,
+                      height: 220,
+                    ),
+                    const Positioned(
+                        top: 19,
+                        right: 19,
+                        child: LikeButton(
+                          isLiked: false,
+                          campaignId: "",
+                        )),
+                    Positioned(
+                        bottom: -15,
+                        right: 20,
+                        child: Container(
+                          width: 100,
+                          height: 35,
+                          decoration: BoxDecoration(
                               color: kTextSecondaryColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 15.0),
-                        child: Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 16,
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                              borderRadius: BorderRadius.circular(4)),
+                          child: const Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.calendar_month_outlined,
+                                color: kWhiteColor,
+                                size: 16,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "9 Days TOur",
+                                style:
+                                    TextStyle(color: kWhiteColor, fontSize: 13),
+                              ),
+                            ],
+                          ),
+                        ))
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      country,
+                      style: const TextStyle(
+                          color: kTextSecondaryColor, fontSize: 19),
+                    ),
+                    Text(city,
+                        style: const TextStyle(
+                            color: kPrimaryColor, fontSize: 22)),
+                    const Text("Star"),
+                    Text(
+                      location,
+                      style:
+                          const TextStyle(color: ksecondaryColor, fontSize: 15),
+                    ),
+                    const SizedBox(height: 10),
+                    const Divider(
+                      thickness: 0.8,
+                      color: kDividerColor,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(money,
+                            style: const TextStyle(
+                                color: kTextSecondaryColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 16,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

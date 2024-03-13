@@ -56,7 +56,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                         child: Text(
                           "London \ntrip Itinerary",
                           style: TextStyle(
-                              color: kBorderColor,
+                              color: kPrimaryColor,
                               fontSize: 23,
                               fontFamily: kFuturaPTBold),
                         ),
@@ -71,7 +71,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(35),
                                     border: Border.all(
-                                        color: kBorderColor, width: 0.5)),
+                                        color: kPrimaryColor, width: 0.5)),
                                 child: const Padding(
                                     padding: EdgeInsets.all(7.0),
                                     child: Icon(
@@ -87,7 +87,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(38),
                                     border: Border.all(
-                                        color: kBorderColor, width: 0.5)),
+                                        color: kPrimaryColor, width: 0.5)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(9.0),
                                   child: Image.asset(
@@ -151,7 +151,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(color: kBorderColor),
+                        decoration: const BoxDecoration(color: kPrimaryColor),
                         width: 1.2,
                         height: 60,
                       ),
@@ -227,7 +227,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
               Text(
                 title,
                 style: const TextStyle(
-                    color: kBorderColor,
+                    color: kPrimaryColor,
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
               ),
@@ -261,7 +261,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       const Text(
                         "Budget",
                         style: TextStyle(
-                          color: kBorderColor,
+                          color: kPrimaryColor,
                           fontSize: 14,
                         ),
                       ),
@@ -286,7 +286,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                 child: Text(
                   "View Details",
                   style: TextStyle(
-                    color: kBorderColor,
+                    color: kPrimaryColor,
                     fontSize: 14,
                     decoration: TextDecoration.underline,
                   ),
@@ -329,7 +329,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       const Text(
                         "One-time payment. No subscription",
                         style: TextStyle(
-                            color: kBorderColor,
+                            color: kPrimaryColor,
                             fontSize: 19,
                             fontWeight: FontWeight.bold),
                       ),
@@ -338,7 +338,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                         child: const Text(
                           "Lifetime license",
                           style: TextStyle(
-                              color: kBorderColor,
+                              color: kPrimaryColor,
                               fontSize: 19,
                               fontWeight: FontWeight.bold),
                         ),
@@ -355,7 +355,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                           Text(
                             "\$14.9",
                             style: TextStyle(
-                                color: kBorderColor,
+                                color: kPrimaryColor,
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -519,7 +519,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                               child: const Text(
                                 "Get access forever!",
                                 style: TextStyle(
-                                    color: kBorderColor,
+                                    color: kPrimaryColor,
                                     fontWeight: FontWeight.bold),
                               ),
                               onPressed: () {}),
@@ -566,7 +566,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       const Text(
                         "Details",
                         style: TextStyle(
-                            color: kBorderColor,
+                            color: kPrimaryColor,
                             fontSize: 19,
                             fontWeight: FontWeight.bold),
                       ),
@@ -598,7 +598,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                   Text(
                                     "City",
                                     style: TextStyle(
-                                      color: kBorderColor,
+                                      color: kPrimaryColor,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -633,7 +633,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                   Text(
                                     "Kind of Traveler",
                                     style: TextStyle(
-                                      color: kBorderColor,
+                                      color: kPrimaryColor,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -673,7 +673,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                   Text(
                                     "Days",
                                     style: TextStyle(
-                                      color: kBorderColor,
+                                      color: kPrimaryColor,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -709,7 +709,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                   Text(
                                     "Transport",
                                     style: TextStyle(
-                                      color: kBorderColor,
+                                      color: kPrimaryColor,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -746,7 +746,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                               Text(
                                 "Budget",
                                 style: TextStyle(
-                                  color: kBorderColor,
+                                  color: kPrimaryColor,
                                   fontSize: 17,
                                 ),
                               ),
@@ -767,11 +767,12 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                         width: Get.width,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: kBorderColor, width: 1)),
+                            border: Border.all(color: kPrimaryColor, width: 1)),
                         child: const Center(
                           child: Text(
                             "Update Details",
-                            style: TextStyle(color: kBorderColor, fontSize: 16),
+                            style:
+                                TextStyle(color: kPrimaryColor, fontSize: 16),
                           ),
                         ),
                       )
@@ -816,7 +817,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       const Text(
                         "Download",
                         style: TextStyle(
-                            color: kBorderColor,
+                            color: kPrimaryColor,
                             fontSize: 19,
                             fontWeight: FontWeight.bold),
                       ),
@@ -827,7 +828,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
                                 border: Border.all(
-                                    color: kBorderColor, width: 0.3)),
+                                    color: kPrimaryColor, width: 0.3)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.asset("assets/icons/PDFHD.png",
@@ -842,7 +843,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
                                 border: Border.all(
-                                    color: kBorderColor, width: 0.3)),
+                                    color: kPrimaryColor, width: 0.3)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.asset("assets/icons/PPTHD.png",
@@ -894,7 +895,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       const Text(
                         "Usefull Tools",
                         style: TextStyle(
-                            color: kBorderColor,
+                            color: kPrimaryColor,
                             fontSize: 19,
                             fontWeight: FontWeight.bold),
                       ),
@@ -905,7 +906,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
                                 border: Border.all(
-                                    color: kBorderColor, width: 0.3)),
+                                    color: kPrimaryColor, width: 0.3)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.asset("assets/icons/PDFHD.png",
@@ -924,7 +925,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
                                 border: Border.all(
-                                    color: kBorderColor, width: 0.3)),
+                                    color: kPrimaryColor, width: 0.3)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.asset(

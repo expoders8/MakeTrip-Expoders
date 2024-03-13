@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../ui/TripDetails/trip_details.dart';
 import '../ui/UpgradeToPro/upgrade_to_pro.dart';
 import '../ui/home/home.dart';
 import '../ui/Auth/Login/login.dart';
@@ -33,6 +34,10 @@ class AppPages {
     GetPage(
       name: _Paths.upgradeToProPage,
       page: () => const UpgradeToProPage(),
+    ),
+    GetPage(
+      name: _Paths.tripDetailsPage,
+      page: () => const TripDetailsPage(),
     ),
   ];
 }

@@ -48,7 +48,8 @@ class _HomePageState extends State<HomePage> {
               )),
             ),
             onPressed: () {
-              Get.toNamed(Routes.loginPage);
+              // Get.toNamed(Routes.loginPage);
+              Get.toNamed(Routes.topDestinationPage);
             },
           ),
         ],
@@ -416,7 +417,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Container(
                                 decoration:
-                                    const BoxDecoration(color: kBorderColor),
+                                    const BoxDecoration(color: kPrimaryColor),
                                 width: 1,
                                 height: 70,
                               ),
@@ -571,7 +572,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Container(
                                 decoration:
-                                    const BoxDecoration(color: kBorderColor),
+                                    const BoxDecoration(color: kPrimaryColor),
                                 width: 1,
                                 height: 70,
                               ),
@@ -591,7 +592,7 @@ class _HomePageState extends State<HomePage> {
                               padding:
                                   const EdgeInsets.fromLTRB(20, 16, 20, 16),
                               borderRadius: BorderRadius.circular(30),
-                              color: kBorderColor,
+                              color: kPrimaryColor,
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -677,7 +678,7 @@ class _HomePageState extends State<HomePage> {
                         const Text(
                           "Delivered in less than 1 minute",
                           style: TextStyle(
-                              color: kBorderColor, fontFamily: kFuturaPTBook),
+                              color: kPrimaryColor, fontFamily: kFuturaPTBook),
                         ),
                         const SizedBox(height: 15)
                       ],
@@ -728,7 +729,7 @@ class _HomePageState extends State<HomePage> {
                     Card(
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
-                          color: nextbutton ? kBorderColor : kCardColor,
+                          color: nextbutton ? kPrimaryColor : kCardColor,
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(10.0),
@@ -784,14 +785,14 @@ class _HomePageState extends State<HomePage> {
                                               border:
                                                   const UnderlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: kBorderColor,
+                                                  color: kPrimaryColor,
                                                   width: 0.5,
                                                 ),
                                               ),
                                               focusedBorder:
                                                   const UnderlineInputBorder(
                                                 borderSide: BorderSide(
-                                                    color: kBorderColor,
+                                                    color: kPrimaryColor,
                                                     width: 0.2),
                                               ),
                                             ),
@@ -831,7 +832,7 @@ class _HomePageState extends State<HomePage> {
                                             height: 50,
                                             width: 50,
                                             decoration: BoxDecoration(
-                                                color: kBorderColor,
+                                                color: kPrimaryColor,
                                                 borderRadius:
                                                     BorderRadius.circular(5)),
                                             child: const Center(
@@ -862,7 +863,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Container(
-                  decoration: const BoxDecoration(color: kBorderColor),
+                  decoration: const BoxDecoration(color: kPrimaryColor),
                   width: 1,
                   height: 70,
                 ),
@@ -887,7 +888,7 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(5),
             border: Border.all(
                 color: selectedTab == name
-                    ? kBorderColor
+                    ? kPrimaryColor
                     : const Color(0xFFD2D2D2),
                 width: 1)),
         child: Padding(
@@ -923,7 +924,7 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(5),
             border: Border.all(
                 color: selectedTab2 == name
-                    ? kBorderColor
+                    ? kPrimaryColor
                     : const Color(0xFFD2D2D2),
                 width: 1)),
         child: Padding(
@@ -976,19 +977,19 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
                       border: Border.all(
-                          color: kBorderColor,
+                          color: kPrimaryColor,
                           width: selectedName == name ? 2.0 : 1),
                     ),
                     child: Icon(
                       icon,
-                      color: kBorderColor,
+                      color: kPrimaryColor,
                     ),
                   )
                 : Container(
                     decoration: BoxDecoration(
                         border: Border.all(
                             color: selectedName == name
-                                ? kBorderColor
+                                ? kPrimaryColor
                                 : kWhiteColor,
                             width: 2.0),
                         borderRadius: BorderRadius.circular(12)),

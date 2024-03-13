@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                         const Text(
                           "MakeTrip",
                           style: TextStyle(
-                              color: kBorderColor,
+                              color: kPrimaryColor,
                               fontFamily: kFuturaPTBold,
                               fontSize: 28),
                         ),
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
                               border:
-                                  Border.all(color: kBorderColor, width: 1)),
+                                  Border.all(color: kPrimaryColor, width: 1)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                               const Text(
                                 "Sign in with Google",
                                 style: TextStyle(
-                                    color: kBorderColor,
+                                    color: kPrimaryColor,
                                     fontFamily: kFuturaPTMedium,
                                     fontSize: 16),
                               ),
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: CupertinoButton(
                               padding:
                                   const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              color: kBorderColor,
+                              color: kPrimaryColor,
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

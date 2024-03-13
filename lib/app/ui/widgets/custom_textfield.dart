@@ -85,7 +85,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         prefixIcon: widget.prefixIcon != null
             ? Image.asset(
                 widget.prefixIcon.toString(),
-                color: kBorderColor,
+                color: kPrimaryColor,
                 height: 20,
                 width: 20,
                 fit: BoxFit.cover,
@@ -111,15 +111,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           borderRadius: BorderRadius.all(
             Radius.circular(9.0),
           ),
-          borderSide: BorderSide(color: kBorderColor),
+          borderSide: BorderSide(color: kPrimaryColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(9.0),
-          borderSide: const BorderSide(color: kBorderColor, width: 1.0),
+          borderSide: const BorderSide(color: kPrimaryColor, width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(9.0),
-          borderSide: const BorderSide(color: kBorderColor),
+          borderSide: const BorderSide(color: kPrimaryColor),
         ),
       ),
       maxLines: widget.maxLines,

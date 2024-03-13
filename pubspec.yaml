@@ -38,6 +38,9 @@ dependencies:
   provider: ^6.1.1
   lottie: ^2.3.2
   flutter_typeahead: ^4.1.1
+  google_maps_flutter: ^2.2.8
+  readmore: ^2.2.0
+  animations: ^2.0.11
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +99,30 @@ flutter:
     - family: FuturaPTMedium
       fonts:
         - asset: assets/fonts/FuturaPTMedium.ttf
+
+    - family: CircularStdBlack
+      fonts:
+        - asset: assets/fonts/CircularStd-Black.ttf
+
+    - family: CircularStdBold
+      fonts:
+        - asset: assets/fonts/CircularStd-Bold.ttf
+
+    - family: CircularStdBook
+      fonts:
+        - asset: assets/fonts/CircularStd-Book.ttf
+
+    - family: CircularStdMedium
+      fonts:
+        - asset: assets/fonts/CircularStd-Medium.ttf
+
+    - family: WorkSans
+      fonts:
+        - asset: assets/fonts/work-sans-medium.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
