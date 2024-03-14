@@ -40,7 +40,8 @@ dependencies:
   flutter_typeahead: ^4.1.1
   google_maps_flutter: ^2.2.8
   readmore: ^2.2.0
-  animations: ^2.0.11
+  flutter_staggered_animations: ^1.1.1
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:

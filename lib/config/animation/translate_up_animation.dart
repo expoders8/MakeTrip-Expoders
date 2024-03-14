@@ -4,7 +4,7 @@ class TranslateUpAnimation extends StatelessWidget {
   const TranslateUpAnimation({
     super.key,
     required this.child,
-    this.duration = const Duration(milliseconds: 1000),
+    this.duration = const Duration(milliseconds: 2000),
   });
 
   final Widget child;

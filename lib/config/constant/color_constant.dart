@@ -9,7 +9,7 @@ const kHintTextStyleColor = Color(0x99000000);
 const kButtonColor = Color(0xEF03CEA4);
 const kButtonSecondaryColor = Color(0x8EFF0000);
 const kErrorColor = Color(0xFFFF2C1D);
-const kBorderColor = Color.fromARGB(255, 216, 216, 216);
+const kBorderColor = Color(0xFFD8D8D8);
 const kDividerColor = Color(0xFFC9C9C9);
 
 const kBackGroundColor = Color(0XFFF4F6F7);

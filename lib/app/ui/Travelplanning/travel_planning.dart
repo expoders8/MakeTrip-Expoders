@@ -2,17 +2,27 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../config/animation/translate_right_animation.dart';
 import '../../../config/constant/font_constant.dart';
 import '../../../config/constant/color_constant.dart';
+import '../../routes/app_pages.dart';
 
 class TravelPlanningPage extends StatefulWidget {
-  const TravelPlanningPage({super.key});
+  final String? city;
+  final List? dayDetails;
+  const TravelPlanningPage({super.key, this.city = "London", this.dayDetails});
 
   @override
   State<TravelPlanningPage> createState() => _TravelPlanningPageState();
 }
 
 class _TravelPlanningPageState extends State<TravelPlanningPage> {
+  @override
+  void initState() {
+    var data = widget.dayDetails;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -51,53 +61,55 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "London \ntrip Itinerary",
-                          style: TextStyle(
+                          "${widget.city}\ntrip Itinerary",
+                          style: const TextStyle(
                               color: kPrimaryColor,
                               fontSize: 23,
                               fontFamily: kFuturaPTBold),
                         ),
                       ),
-                      Row(
-                        children: [
-                          IconButton(
-                              onPressed: () {
-                                bottomSheetForDownload();
-                              },
-                              icon: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(35),
-                                    border: Border.all(
-                                        color: kPrimaryColor, width: 0.5)),
-                                child: const Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(
-                                      Icons.download_outlined,
-                                      size: 20,
-                                    )),
-                              )),
-                          IconButton(
-                              onPressed: () {
-                                bottomSheetForUsefulTools();
-                              },
-                              icon: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(38),
-                                    border: Border.all(
-                                        color: kPrimaryColor, width: 0.5)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(9.0),
-                                  child: Image.asset(
-                                    "assets/icons/tools.png",
-                                    width: 17,
-                                    height: 17,
+                      TranslateRightAnimation(
+                        child: Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  bottomSheetForDownload();
+                                },
+                                icon: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(35),
+                                      border: Border.all(
+                                          color: kPrimaryColor, width: 0.5)),
+                                  child: const Padding(
+                                      padding: EdgeInsets.all(7.0),
+                                      child: Icon(
+                                        Icons.download_outlined,
+                                        size: 20,
+                                      )),
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  bottomSheetForUsefulTools();
+                                },
+                                icon: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(38),
+                                      border: Border.all(
+                                          color: kPrimaryColor, width: 0.5)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(9.0),
+                                    child: Image.asset(
+                                      "assets/icons/tools.png",
+                                      width: 17,
+                                      height: 17,
+                                    ),
                                   ),
-                                ),
-                              )),
-                        ],
+                                )),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -277,18 +289,21 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                bottomSheetForDetails();
-              },
-              child: const Padding(
-                padding: EdgeInsets.only(right: 18.0),
-                child: Text(
-                  "View Details",
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 14,
-                    decoration: TextDecoration.underline,
+            TranslateRightAnimation(
+              child: GestureDetector(
+                onTap: () {
+                  // bottomSheetForDetails();
+                  Get.toNamed(Routes.topDestinationPage);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(right: 18.0),
+                  child: Text(
+                    "View Details",
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 14,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ),

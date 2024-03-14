@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.openuniverse.maketrip">
+      <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="MakeTrip"
         android:name="${applicationName}"

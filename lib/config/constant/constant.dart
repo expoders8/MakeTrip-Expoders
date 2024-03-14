@@ -1,1 +1,1 @@
-const String baseUrl = "https://opentales-api.azurewebsites.net/";
+const String baseUrl = "https://maketrip.vercel.app";

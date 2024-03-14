@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:maketrip/config/constant/font_constant.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../../config/animation/translate_right_animation.dart';
 import '../../../config/constant/color_constant.dart';
 
 class TripDetailsPage extends StatefulWidget {
@@ -64,24 +65,26 @@ class _TripDetailsPageState extends State<TripDetailsPage> {
                                   Positioned(
                                       bottom: 20,
                                       right: 20,
-                                      child: Container(
-                                        height: 30,
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: kWhiteColor),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Image.asset(
-                                              "assets/icons/grid_view.png",
-                                              fit: BoxFit.cover,
-                                            ),
-                                            const SizedBox(width: 5),
-                                            const Text("View More"),
-                                          ],
+                                      child: TranslateRightAnimation(
+                                        child: Container(
+                                          height: 30,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              color: kWhiteColor),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Image.asset(
+                                                "assets/icons/grid_view.png",
+                                                fit: BoxFit.cover,
+                                              ),
+                                              const SizedBox(width: 5),
+                                              const Text("View More"),
+                                            ],
+                                          ),
                                         ),
                                       ))
                                 ],
