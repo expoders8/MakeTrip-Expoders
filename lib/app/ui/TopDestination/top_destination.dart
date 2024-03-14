@@ -6,7 +6,6 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:maketrip/app/routes/app_pages.dart';
 
 import '../../../config/animation/translate_right_animation.dart';
-import '../../../config/animation/translate_up_animation.dart';
 import '../../../config/constant/font_constant.dart';
 import '../../models/top_destination_list_model.dart';
 import '../widgets/like_button.dart';
@@ -34,7 +33,6 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           title: const Text("Top Restaurants / Hotels"),

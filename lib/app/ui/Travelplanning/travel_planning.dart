@@ -19,7 +19,7 @@ class TravelPlanningPage extends StatefulWidget {
 class _TravelPlanningPageState extends State<TravelPlanningPage> {
   @override
   void initState() {
-    var data = widget.dayDetails;
+    // var data = widget.dayDetails;
     super.initState();
   }
 

@@ -1,13 +1,15 @@
+import 'dart:io';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-import '../../../config/animation/translate_up_animation.dart';
 import '../../routes/app_pages.dart';
+import '../../models/city_list_model.dart';
+import '../../services/genret_trip_service.dart';
 import '../../../config/constant/font_constant.dart';
 import '../../../config/constant/color_constant.dart';
-import '../../services/genret_trip_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,6 +35,87 @@ class _HomePageState extends State<HomePage> {
   FocusNode focusNode2 = FocusNode();
   FocusNode focusNode3 = FocusNode();
   FocusNode focusNode4 = FocusNode();
+
+  List<CityModel> cityModel = [
+    CityModel(
+      image: "assets/images/Rectangle8.png",
+      cityName: "London",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle9.png",
+      cityName: "Paris",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle10.png",
+      cityName: "New York",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle11.png",
+      cityName: "Mumbai",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle12.png",
+      cityName: "Amsterdam",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle13.png",
+      cityName: "Nepal",
+    ),
+    CityModel(
+      image: "assets/icons/Plus.png",
+      cityName: "23+ More",
+    ),
+  ];
+  List<CityModel> citymultipalModel = [
+    CityModel(
+      image: "assets/images/Rectangle8.png",
+      cityName: "London",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle9.png",
+      cityName: "Paris",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle10.png",
+      cityName: "New York",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle11.png",
+      cityName: "Mumbai",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle12.png",
+      cityName: "Amsterdam",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle13.png",
+      cityName: "Nepal",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle8.png",
+      cityName: "America",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle10.png",
+      cityName: "Caneda",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle9.png",
+      cityName: "NewZealand",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle13.png",
+      cityName: "Bangladesh",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle8.png",
+      cityName: "Afghanistan",
+    ),
+    CityModel(
+      image: "assets/images/Rectangle10.png",
+      cityName: "Albania",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -108,101 +191,221 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   const SizedBox(height: 10),
-                                  TranslateUpAnimation(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            buildCardWidget(
-                                                "assets/images/Rectangle8.png",
-                                                "London",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle9.png",
-                                                "Paris",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle10.png",
-                                                "New York",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle11.png",
-                                                "Mumbai",
-                                                false,
-                                                Icons.add),
-                                          ],
+                                  SizedBox(
+                                    height: 315,
+                                    width: Get.width,
+                                    child: AnimationLimiter(
+                                      child: GridView.builder(
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount:
+                                              size.width > 500 ? 5 : 4,
+                                          mainAxisExtent: size.width > 500
+                                              ? 365
+                                              : Platform.isIOS
+                                                  ? 230
+                                                  : 105,
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            buildCardWidget(
-                                                "assets/images/Rectangle10.png",
-                                                "New York",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle11.png",
-                                                "Mumbai",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle12.png",
-                                                "Amsterdam",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle13.png",
-                                                "Nepal",
-                                                false,
-                                                Icons.add),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            buildCardWidget(
-                                                "assets/images/Rectangle10.png",
-                                                "New York",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle11.png",
-                                                "Mumbai",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle12.png",
-                                                "Amsterdam",
-                                                false,
-                                                Icons.add),
-                                            buildCardWidget(
-                                                "assets/images/Rectangle13.png",
-                                                "Nepal",
-                                                false,
-                                                Icons.add),
-                                          ],
-                                        ),
-                                      ],
+                                        padding: const EdgeInsets.only(
+                                            right: 5, bottom: 10),
+                                        physics: const BouncingScrollPhysics(
+                                            parent:
+                                                AlwaysScrollableScrollPhysics()),
+                                        itemCount: citymultipalModel.length,
+                                        itemBuilder: (context, index) {
+                                          var citydata =
+                                              citymultipalModel[index];
+                                          return AnimationConfiguration
+                                              .staggeredGrid(
+                                            position: index,
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            columnCount:
+                                                citymultipalModel.length,
+                                            child: ScaleAnimation(
+                                              duration: const Duration(
+                                                  milliseconds: 900),
+                                              curve:
+                                                  Curves.fastLinearToSlowEaseIn,
+                                              scale: 1.5,
+                                              child: FadeInAnimation(
+                                                  child: GestureDetector(
+                                                onTap: () {
+                                                  if (citydata.cityName ==
+                                                      "23+ More") {
+                                                    setState(() {
+                                                      selectedName =
+                                                          citydata.cityName;
+                                                      multipalDestination =
+                                                          true;
+                                                    });
+                                                  } else {
+                                                    Get.toNamed(Routes
+                                                        .travelPlanningPage);
+                                                    setState(() {
+                                                      selectedName =
+                                                          citydata.cityName;
+                                                      multipalDestination =
+                                                          false;
+                                                    });
+                                                  }
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    children: [
+                                                      citydata.cityName ==
+                                                              "23+ More"
+                                                          ? Container(
+                                                              width: 60,
+                                                              height: 60,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            11),
+                                                                border: Border.all(
+                                                                    color:
+                                                                        kPrimaryColor,
+                                                                    width: selectedName ==
+                                                                            citydata.cityName
+                                                                        ? 2.0
+                                                                        : 1),
+                                                              ),
+                                                              child: Image.asset(
+                                                                  citydata
+                                                                      .image))
+                                                          : Container(
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: selectedName ==
+                                                                              citydata
+                                                                                  .cityName
+                                                                          ? kPrimaryColor
+                                                                          : kWhiteColor,
+                                                                      width:
+                                                                          2.0),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12)),
+                                                              child: Image.asset(
+                                                                  citydata
+                                                                      .image),
+                                                            ),
+                                                      const SizedBox(height: 3),
+                                                      Text(
+                                                        citydata.cityName,
+                                                        style: const TextStyle(
+                                                            fontSize: 12),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
+                                  // TranslateUpAnimation(
+                                  //   child: Column(
+                                  //     mainAxisAlignment:
+                                  //         MainAxisAlignment.center,
+                                  //     crossAxisAlignment:
+                                  //         CrossAxisAlignment.center,
+                                  //     children: [
+                                  //       Row(
+                                  //         mainAxisAlignment:
+                                  //             MainAxisAlignment.center,
+                                  //         children: [
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle8.png",
+                                  //               "London",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle9.png",
+                                  //               "Paris",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle10.png",
+                                  //               "New York",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle11.png",
+                                  //               "Mumbai",
+                                  //               false,
+                                  //               Icons.add),
+                                  //         ],
+                                  //       ),
+                                  //       Row(
+                                  //         mainAxisAlignment:
+                                  //             MainAxisAlignment.center,
+                                  //         children: [
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle10.png",
+                                  //               "New York",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle11.png",
+                                  //               "Mumbai",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle12.png",
+                                  //               "Amsterdam",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle13.png",
+                                  //               "Nepal",
+                                  //               false,
+                                  //               Icons.add),
+                                  //         ],
+                                  //       ),
+                                  //       Row(
+                                  //         mainAxisAlignment:
+                                  //             MainAxisAlignment.center,
+                                  //         children: [
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle10.png",
+                                  //               "New York",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle11.png",
+                                  //               "Mumbai",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle12.png",
+                                  //               "Amsterdam",
+                                  //               false,
+                                  //               Icons.add),
+                                  //           buildCardWidget(
+                                  //               "assets/images/Rectangle13.png",
+                                  //               "Nepal",
+                                  //               false,
+                                  //               Icons.add),
+                                  //         ],
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
                           )
                         : Card(
                             child: SizedBox(
-                              height: 150,
+                              height: 155,
                               width: size.width,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,51 +422,112 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   const SizedBox(height: 10),
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          buildCardWidget(
-                                              "assets/images/Rectangle8.png",
-                                              "London",
-                                              false,
-                                              Icons.add),
-                                          buildCardWidget(
-                                              "assets/images/Rectangle9.png",
-                                              "Paris",
-                                              false,
-                                              Icons.add),
-                                          buildCardWidget(
-                                              "assets/images/Rectangle10.png",
-                                              "New York",
-                                              false,
-                                              Icons.add),
-                                          buildCardWidget(
-                                              "assets/images/Rectangle11.png",
-                                              "Mumbai",
-                                              false,
-                                              Icons.add),
-                                          buildCardWidget(
-                                              "assets/images/Rectangle12.png",
-                                              "Amsterdam",
-                                              false,
-                                              Icons.add),
-                                          buildCardWidget(
-                                              "assets/images/Rectangle13.png",
-                                              "Nepal",
-                                              false,
-                                              Icons.add),
-                                          buildCardWidget(
-                                              "assets/images/Rectangle13.png",
-                                              "23+ More",
-                                              true,
-                                              Icons.add),
-                                        ],
+                                  SizedBox(
+                                    width: Get.width,
+                                    height: 105,
+                                    child: AnimationLimiter(
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        padding:
+                                            const EdgeInsets.only(right: 5),
+                                        physics: const BouncingScrollPhysics(
+                                            parent:
+                                                AlwaysScrollableScrollPhysics()),
+                                        itemCount: cityModel.length,
+                                        itemBuilder: (context, index) {
+                                          var citydata = cityModel[index];
+                                          return AnimationConfiguration
+                                              .staggeredGrid(
+                                            position: index,
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            columnCount: cityModel.length,
+                                            child: ScaleAnimation(
+                                              duration: const Duration(
+                                                  milliseconds: 900),
+                                              curve:
+                                                  Curves.fastLinearToSlowEaseIn,
+                                              scale: 1.5,
+                                              child: FadeInAnimation(
+                                                  child: GestureDetector(
+                                                onTap: () {
+                                                  if (citydata.cityName ==
+                                                      "23+ More") {
+                                                    setState(() {
+                                                      selectedName =
+                                                          citydata.cityName;
+                                                      multipalDestination =
+                                                          true;
+                                                    });
+                                                  } else {
+                                                    Get.toNamed(Routes
+                                                        .travelPlanningPage);
+                                                    setState(() {
+                                                      selectedName =
+                                                          citydata.cityName;
+                                                      multipalDestination =
+                                                          false;
+                                                    });
+                                                  }
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    children: [
+                                                      citydata.cityName ==
+                                                              "23+ More"
+                                                          ? Container(
+                                                              width: 60,
+                                                              height: 60,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            11),
+                                                                border: Border.all(
+                                                                    color:
+                                                                        kPrimaryColor,
+                                                                    width: selectedName ==
+                                                                            citydata.cityName
+                                                                        ? 2.0
+                                                                        : 1),
+                                                              ),
+                                                              child: Image.asset(
+                                                                  citydata
+                                                                      .image))
+                                                          : Container(
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: selectedName ==
+                                                                              citydata
+                                                                                  .cityName
+                                                                          ? kPrimaryColor
+                                                                          : kWhiteColor,
+                                                                      width:
+                                                                          2.0),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12)),
+                                                              child: Image.asset(
+                                                                  citydata
+                                                                      .image),
+                                                            ),
+                                                      const SizedBox(height: 3),
+                                                      Text(
+                                                        citydata.cityName,
+                                                        style: const TextStyle(
+                                                            fontSize: 12),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ),
@@ -1029,62 +1293,6 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  buildCardWidget(String image, String name, bool iconcheck, IconData? icon) {
-    return GestureDetector(
-      onTap: () {
-        if (name == "23+ More") {
-          setState(() {
-            selectedName = name;
-            multipalDestination = true;
-          });
-        } else {
-          Get.toNamed(Routes.travelPlanningPage);
-          setState(() {
-            selectedName = name;
-            multipalDestination = false;
-          });
-        }
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            iconcheck
-                ? Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(11),
-                      border: Border.all(
-                          color: kPrimaryColor,
-                          width: selectedName == name ? 2.0 : 1),
-                    ),
-                    child: Icon(
-                      icon,
-                      color: kPrimaryColor,
-                    ),
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: selectedName == name
-                                ? kPrimaryColor
-                                : kWhiteColor,
-                            width: 2.0),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Image.asset(image),
-                  ),
-            const SizedBox(height: 3),
-            Text(
-              name,
-              style: const TextStyle(fontSize: 12),
-            )
-          ],
         ),
       ),
     );

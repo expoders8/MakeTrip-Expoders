@@ -30,12 +30,10 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   bool isTouched = false;
-  bool _passwordVisible = false;
 
   @override
   void initState() {
     super.initState();
-    _passwordVisible = false;
   }
 
   validateInput(value) {

@@ -123,22 +123,18 @@ class _TripDetailsPageState extends State<TripDetailsPage> {
                                         ],
                                       ),
                                     ),
-                                    TabBar(
+                                    const TabBar(
                                       tabAlignment: TabAlignment.start,
-                                      indicatorPadding:
-                                          const EdgeInsets.all(10),
+                                      indicatorPadding: EdgeInsets.all(10),
                                       isScrollable: true,
                                       dividerColor: kWhiteColor,
                                       indicatorColor: kPrimaryColor,
                                       labelColor: kPrimaryColor,
-                                      labelStyle: const TextStyle(
+                                      labelStyle: TextStyle(
                                           fontFamily: kCircularStdMedium),
                                       unselectedLabelColor:
                                           kTextDiscriptionColor,
-                                      onTap: (value) {
-                                        print(value);
-                                      },
-                                      tabs: const [
+                                      tabs: [
                                         Tab(
                                           text: 'Overview',
                                         ),
