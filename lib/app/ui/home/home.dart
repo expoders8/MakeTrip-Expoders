@@ -139,8 +139,8 @@ class _HomePageState extends State<HomePage> {
               )),
             ),
             onPressed: () {
-              Get.toNamed(Routes.loginPage);
-              // Get.toNamed(Routes.topDestinationPage);
+              // Get.toNamed(Routes.loginPage);
+              Get.toNamed(Routes.eventsPage);
             },
           ),
         ],
@@ -240,8 +240,8 @@ class _HomePageState extends State<HomePage> {
                                                           true;
                                                     });
                                                   } else {
-                                                    Get.toNamed(Routes
-                                                        .travelPlanningPage);
+                                                    // Get.toNamed(Routes
+                                                    //     .travelPlanningPage);
                                                     setState(() {
                                                       selectedName =
                                                           citydata.cityName;
@@ -460,8 +460,8 @@ class _HomePageState extends State<HomePage> {
                                                           true;
                                                     });
                                                   } else {
-                                                    Get.toNamed(Routes
-                                                        .travelPlanningPage);
+                                                    // Get.toNamed(Routes
+                                                    //     .travelPlanningPage);
                                                     setState(() {
                                                       selectedName =
                                                           citydata.cityName;

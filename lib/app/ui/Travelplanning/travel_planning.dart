@@ -1,15 +1,17 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../config/animation/translate_right_animation.dart';
 import '../../../config/constant/font_constant.dart';
 import '../../../config/constant/color_constant.dart';
+import '../../models/activity_model.dart';
 import '../../routes/app_pages.dart';
 
 class TravelPlanningPage extends StatefulWidget {
   final String? city;
-  final List? dayDetails;
+  final String? dayDetails;
   const TravelPlanningPage({super.key, this.city = "London", this.dayDetails});
 
   @override
@@ -20,12 +22,75 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
   @override
   void initState() {
     // var data = widget.dayDetails;
+    // parseActivities(widget.dayDetails.toString());
     super.initState();
   }
+
+  // Map<String, List<Activity>> parseActivities(String responseBody) {
+  //   Map<String, List<Activity>> activitiesMap = {};
+
+  //   List<String> lines = responseBody.split('\n');
+  //   lines.forEach((line) {
+  //     List<String> parts = line.split('|');
+  //     if (parts.length == 5) {
+  //       String day = parts[0];
+  //       Activity activity = Activity(
+  //         day: day,
+  //         time: parts[1],
+  //         location: parts[2],
+  //         description: parts[3],
+  //         cost: parts[4],
+  //       );
+  //       if (!activitiesMap.containsKey(day)) {
+  //         activitiesMap[day] = [];
+  //       }
+  //       activitiesMap[day]!.add(activity);
+  //     }
+  //   });
+
+  //   return activitiesMap;
+  // }
+  // List<Activity> parseActivities(String responseBody) {
+  //   List<Activity> activities = [];
+  //   List<String> lines = responseBody.split('\n');
+  //   lines.forEach((line) {
+  //     List<String> parts = line.split('|');
+  //     if (parts.length == 5) {
+  //       activities.add(Activity(
+  //         day: parts[0],
+  //         time: parts[1],
+  //         location: parts[2],
+  //         description: parts[3],
+  //         cost: parts[4],
+  //       ));
+  //     }
+  //   });
+  //   return activities;
+  // }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    Map<String, List<Activity>> activitiesMap = {};
+
+    List<String> lines = widget.dayDetails!.split('\n');
+    lines.forEach((line) {
+      List<String> parts = line.split('|');
+      if (parts.length == 5) {
+        String day = parts[0];
+        Activity activity = Activity(
+          day: day,
+          time: parts[1],
+          location: parts[2],
+          description: parts[3],
+          cost: parts[4],
+        );
+        if (!activitiesMap.containsKey(day)) {
+          activitiesMap[day] = [];
+        }
+        activitiesMap[day]!.add(activity);
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 15,
@@ -71,150 +136,210 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                               fontFamily: kFuturaPTBold),
                         ),
                       ),
-                      TranslateRightAnimation(
-                        child: Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  bottomSheetForDownload();
-                                },
-                                icon: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(35),
-                                      border: Border.all(
-                                          color: kPrimaryColor, width: 0.5)),
-                                  child: const Padding(
-                                      padding: EdgeInsets.all(7.0),
-                                      child: Icon(
-                                        Icons.download_outlined,
-                                        size: 20,
-                                      )),
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                  bottomSheetForUsefulTools();
-                                },
-                                icon: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(38),
-                                      border: Border.all(
-                                          color: kPrimaryColor, width: 0.5)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(9.0),
-                                    child: Image.asset(
-                                      "assets/icons/tools.png",
-                                      width: 17,
-                                      height: 17,
-                                    ),
+                      Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                bottomSheetForDownload();
+                              },
+                              icon: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(35),
+                                    border: Border.all(
+                                        color: kPrimaryColor, width: 0.5)),
+                                child: const Padding(
+                                    padding: EdgeInsets.all(7.0),
+                                    child: Icon(
+                                      Icons.download_outlined,
+                                      size: 20,
+                                    )),
+                              )),
+                          IconButton(
+                              onPressed: () {
+                                bottomSheetForUsefulTools();
+                              },
+                              icon: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(38),
+                                    border: Border.all(
+                                        color: kPrimaryColor, width: 0.5)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(9.0),
+                                  child: Image.asset(
+                                    "assets/icons/tools.png",
+                                    width: 17,
+                                    height: 17,
                                   ),
-                                )),
-                          ],
-                        ),
+                                ),
+                              )),
+                        ],
                       ),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Card(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "Day 1",
-                                style: TextStyle(
-                                    color: ksecondaryColor,
-                                    fontSize: 15,
-                                    fontFamily: kFuturaPTBook),
+                  SizedBox(
+                    height: Get.height - 130,
+                    width: Get.width,
+                    child: ListView.builder(
+                      padding: const EdgeInsets.only(bottom: 10, top: 10),
+                      itemCount: activitiesMap.length,
+                      itemBuilder: (context, index) {
+                        String day = activitiesMap.keys.elementAt(index);
+                        List<Activity>? activities = activitiesMap[day];
+                        return SizedBox(
+                          child: Column(
+                            children: [
+                              Card(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        day,
+                                        style: const TextStyle(
+                                            color: ksecondaryColor,
+                                            fontSize: 15,
+                                            fontFamily: kFuturaPTBook),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 500,
+                                      child: ListView.builder(
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: activities!.length,
+                                        itemBuilder: (context, index) {
+                                          var tripPlan = activities[index];
+                                          return Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(height: 5),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0),
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Image.asset(
+                                                        "assets/icons/timer.png"),
+                                                    Text(
+                                                      "${tripPlan.time} - ${tripPlan.location}",
+                                                      style: const TextStyle(
+                                                        color: kPrimaryColor,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              const SizedBox(height: 5),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 12, right: 5),
+                                                child: Text(
+                                                  tripPlan.description,
+                                                  style: const TextStyle(
+                                                    color: ksecondaryColor,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 5),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 8.0),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Image.asset(
+                                                            "assets/icons/Frame1701.png"),
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            const Text(
+                                                              "Budget",
+                                                              style: TextStyle(
+                                                                color:
+                                                                    kPrimaryColor,
+                                                                fontSize: 14,
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              tripPlan.cost,
+                                                              style:
+                                                                  const TextStyle(
+                                                                color:
+                                                                    ksecondaryColor,
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      // bottomSheetForDetails();
+                                                      Get.toNamed(Routes
+                                                          .topDestinationPage);
+                                                    },
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 18.0),
+                                                      child: Text(
+                                                        "View Details",
+                                                        style: TextStyle(
+                                                          color: kPrimaryColor,
+                                                          fontSize: 14,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .underline,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            buildDaysTImelineWidget(
-                                "9 AM- Breakfast at Hotel",
-                                "Enjoy a delicious breakfast at hotel",
-                                "\$500 USD"),
-                            const Divider(
-                              thickness: 0.8,
-                              color: kDividerColor,
-                            ),
-                            buildDaysTImelineWidget(
-                                "10 AM- Marble Rocks at Bhedaghat",
-                                "Visit the famous Visit the famous Marble Rocks, a magnificent gorge along the Narmada River, known for its stunning marble cliffs and boad rides.",
-                                "\$500 USD"),
-                            const Divider(
-                              thickness: 0.8,
-                              color: kDividerColor,
-                            ),
-                            buildDaysTImelineWidget(
-                                "1PM- Lunch at Bhedghat",
-                                "Test some local delicious at a restaurant near marble rocks",
-                                "\$500 USD"),
-                            const Divider(
-                              thickness: 0.8,
-                              color: kDividerColor,
-                            ),
-                            buildDaysTImelineWidget(
-                                "3PM-Dhunandhar falls",
-                                "Test some local delicious at a restaurant near marble rocks",
-                                "\$500 USD"),
-                            const SizedBox(height: 10)
-                          ],
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(color: kPrimaryColor),
-                        width: 1.2,
-                        height: 60,
-                      ),
-                      Card(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "Day 2",
-                                style: TextStyle(
-                                    color: ksecondaryColor,
-                                    fontSize: 15,
-                                    fontFamily: kFuturaPTBook),
-                              ),
-                            ),
-                            buildDaysTImelineWidget(
-                                "9 AM- Breakfast at Hotel",
-                                "Enjoy a delicious breakfast at hotel",
-                                "\$500 USD"),
-                            const Divider(
-                              thickness: 0.8,
-                              color: kDividerColor,
-                            ),
-                            buildDaysTImelineWidget(
-                                "10 AM- Marble Rocks at Bhedaghat",
-                                "Visit the famous Visit the famous Marble Rocks, a magnificent gorge along the Narmada River, known for its stunning marble cliffs and boad rides.",
-                                "\$500 USD"),
-                            const Divider(
-                              thickness: 0.8,
-                              color: kDividerColor,
-                            ),
-                            buildDaysTImelineWidget(
-                                "1PM- Lunch at Bhedghat",
-                                "Test some local delicious at a restaurant near marble rocks",
-                                "\$500 USD"),
-                            const Divider(
-                              thickness: 0.8,
-                              color: kDividerColor,
-                            ),
-                            buildDaysTImelineWidget(
-                                "3PM-Dhunandhar falls",
-                                "Test some local delicious at a restaurant near marble rocks",
-                                "\$500 USD"),
-                            const SizedBox(height: 10)
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                    ],
+                              activitiesMap.length - 1 == index
+                                  ? Container()
+                                  : Container(
+                                      decoration: const BoxDecoration(
+                                          color: kPrimaryColor),
+                                      width: 1.2,
+                                      height: 60,
+                                    ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -222,95 +347,6 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
           ),
         ),
       ),
-    );
-  }
-
-  buildDaysTImelineWidget(String title, String description, String budgetUSD) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 5),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset("assets/icons/timer.png"),
-              Text(
-                title,
-                style: const TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 5),
-        Padding(
-          padding: const EdgeInsets.only(left: 12, right: 5),
-          child: Text(
-            description,
-            style: const TextStyle(
-              color: ksecondaryColor,
-              fontSize: 16,
-            ),
-          ),
-        ),
-        const SizedBox(height: 5),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset("assets/icons/Frame1701.png"),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Budget",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 14,
-                        ),
-                      ),
-                      Text(
-                        budgetUSD,
-                        style: const TextStyle(
-                            color: ksecondaryColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            TranslateRightAnimation(
-              child: GestureDetector(
-                onTap: () {
-                  // bottomSheetForDetails();
-                  Get.toNamed(Routes.topDestinationPage);
-                },
-                child: const Padding(
-                  padding: EdgeInsets.only(right: 18.0),
-                  child: Text(
-                    "View Details",
-                    style: TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 14,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ],
     );
   }
 

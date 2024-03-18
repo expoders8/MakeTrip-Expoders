@@ -31,10 +31,8 @@ class TripService {
           });
       if (response.statusCode == 200) {
         // var decodedUser = jsonDecode(response.body);
-        var data = response.body.split("Day");
-
         Get.back();
-        Get.to(() => TravelPlanningPage(city: city, dayDetails: data));
+        Get.to(() => TravelPlanningPage(city: city, dayDetails: response.body));
       } else {
         // LoaderX.hide();
         SnackbarUtils.showErrorSnackbar("Server Error",

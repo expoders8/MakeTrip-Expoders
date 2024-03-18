@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../ui/Events/evnet.dart';
 import '../ui/TripDetails/trip_details.dart';
 import '../ui/UpgradeToPro/upgrade_to_pro.dart';
 import '../ui/home/home.dart';
@@ -38,6 +39,10 @@ class AppPages {
     GetPage(
       name: _Paths.tripDetailsPage,
       page: () => const TripDetailsPage(),
+    ),
+    GetPage(
+      name: _Paths.eventsPage,
+      page: () => const EventsPage(),
     ),
   ];
 }

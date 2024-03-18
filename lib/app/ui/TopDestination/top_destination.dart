@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:maketrip/app/routes/app_pages.dart';
 
-import '../../../config/animation/translate_right_animation.dart';
 import '../../../config/constant/font_constant.dart';
 import '../../models/top_destination_list_model.dart';
 import '../widgets/like_button.dart';
@@ -58,136 +57,133 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
           ),
           child: Column(
             children: [
-              TranslateRightAnimation(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: kWhiteColor,
-                          border: Border.all(color: kWhiteColor),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 50,
-                              width: Get.width / 2.4,
-                              child: TypeAheadField(
-                                debounceDuration:
-                                    const Duration(microseconds: 10),
-                                hideSuggestionsOnKeyboardHide: true,
-                                textFieldConfiguration: TextFieldConfiguration(
-                                  controller: cityController,
-                                  textInputAction: Platform.isAndroid
-                                      ? TextInputAction.none
-                                      : TextInputAction.unspecified,
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Select your City',
-                                    hintStyle: const TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      color: kPrimaryColor,
-                                      fontSize: 14,
-                                    ),
-                                    hintMaxLines: 1,
-                                    contentPadding: const EdgeInsets.all(15),
-                                    suffixIcon: Image.asset(
-                                      "assets/icons/polygon_down.png",
-                                      scale: 1.2,
-                                      width: 5,
-                                    ),
-                                  ),
-                                  style: const TextStyle(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: kWhiteColor,
+                        border: Border.all(color: kWhiteColor),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 50,
+                            width: Get.width / 2.4,
+                            child: TypeAheadField(
+                              debounceDuration:
+                                  const Duration(microseconds: 10),
+                              hideSuggestionsOnKeyboardHide: true,
+                              textFieldConfiguration: TextFieldConfiguration(
+                                controller: cityController,
+                                textInputAction: Platform.isAndroid
+                                    ? TextInputAction.none
+                                    : TextInputAction.unspecified,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Select your City',
+                                  hintStyle: const TextStyle(
                                     fontWeight: FontWeight.w400,
                                     color: kPrimaryColor,
                                     fontSize: 14,
                                   ),
-                                  onSubmitted: (value) {},
-                                  autocorrect: true,
-                                  cursorColor: kPrimaryColor,
-                                ),
-                                suggestionsCallback: (String pattern) async {
-                                  List<String> filteredCities = data
-                                      .where((city) => city
-                                          .toLowerCase()
-                                          .contains(pattern.toLowerCase()))
-                                      .toList();
-                                  return filteredCities;
-                                },
-                                itemBuilder: (context, String suggestion) {
-                                  return ListTile(
-                                    title: Text(suggestion),
-                                  );
-                                },
-                                noItemsFoundBuilder: (context) =>
-                                    const SizedBox(
-                                  child: Center(
-                                    child: Text('No City found'),
+                                  hintMaxLines: 1,
+                                  contentPadding: const EdgeInsets.all(15),
+                                  suffixIcon: Image.asset(
+                                    "assets/icons/polygon_down.png",
+                                    scale: 1.2,
+                                    width: 5,
                                   ),
                                 ),
-                                transitionBuilder:
-                                    (context, suggestionsBox, controller) {
-                                  return suggestionsBox;
-                                },
-                                onSuggestionSelected: (String suggestion) {
-                                  cityController.text = suggestion;
-                                },
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: kPrimaryColor,
+                                  fontSize: 14,
+                                ),
+                                onSubmitted: (value) {},
+                                autocorrect: true,
+                                cursorColor: kPrimaryColor,
                               ),
+                              suggestionsCallback: (String pattern) async {
+                                List<String> filteredCities = data
+                                    .where((city) => city
+                                        .toLowerCase()
+                                        .contains(pattern.toLowerCase()))
+                                    .toList();
+                                return filteredCities;
+                              },
+                              itemBuilder: (context, String suggestion) {
+                                return ListTile(
+                                  title: Text(suggestion),
+                                );
+                              },
+                              noItemsFoundBuilder: (context) => const SizedBox(
+                                child: Center(
+                                  child: Text('No City found'),
+                                ),
+                              ),
+                              transitionBuilder:
+                                  (context, suggestionsBox, controller) {
+                                return suggestionsBox;
+                              },
+                              onSuggestionSelected: (String suggestion) {
+                                cityController.text = suggestion;
+                              },
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        height: 50,
-                        width: Get.width / 2.2,
-                        child: TextFormField(
-                          style: const TextStyle(
-                              color: kPrimaryColor, fontSize: 15),
-                          controller: searchController,
-                          decoration: InputDecoration(
-                            labelText: "Search",
-                            filled: true,
-                            fillColor: kWhiteColor,
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(38, 0, 10, 0),
-                            hintStyle: const TextStyle(color: kGreyColor),
-                            labelStyle: const TextStyle(color: kBlackColor),
-                            prefixIcon: const Icon(Icons.search),
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.grey,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      height: 50,
+                      width: Get.width / 2.2,
+                      child: TextFormField(
+                        style:
+                            const TextStyle(color: kPrimaryColor, fontSize: 15),
+                        controller: searchController,
+                        decoration: InputDecoration(
+                          labelText: "Search",
+                          filled: true,
+                          fillColor: kWhiteColor,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(38, 0, 10, 0),
+                          hintStyle: const TextStyle(color: kGreyColor),
+                          labelStyle: const TextStyle(color: kBlackColor),
+                          prefixIcon: const Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
                             ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: kErrorColor,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: kErrorColor,
                             ),
-                            errorStyle: const TextStyle(color: kErrorColor),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: kWhiteColor,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          errorStyle: const TextStyle(color: kErrorColor),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: kWhiteColor,
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: kWhiteColor,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: kWhiteColor,
                             ),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(

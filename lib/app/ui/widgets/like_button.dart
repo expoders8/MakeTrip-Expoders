@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../config/constant/color_constant.dart';
+import '../../../config/constant/font_constant.dart';
 
 // ignore: must_be_immutable
 class LikeButton extends StatefulWidget {
@@ -58,20 +59,31 @@ class _LikeButtonState extends State<LikeButton> {
       ),
       child: InkWell(
           onTap: _toggleIsLikedState,
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30), color: kWhiteColor),
-            child: getIsLikedState
-                ? Image.asset(
+          child: Row(
+            children: [
+              Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: kWhiteColor),
+                  child: Image.asset(
                     "assets/icons/like.png",
                     scale: 1.7,
-                  )
-                : Image.asset(
-                    "assets/icons/disLike.png",
-                    color: kPrimaryColor,
-                  ),
+                    color: userData != ""
+                        ? getIsLikedState
+                            ? kTextSecondaryColor
+                            : kIconColor
+                        : kIconColor,
+                  )),
+              // Text(
+              //   "2.8 M",
+              //   style: TextStyle(
+              //       color: kPrimaryColor,
+              //       fontSize: 13,
+              //       fontFamily: kCircularStdBook),
+              // ),
+            ],
           )
 
           // ImageIcon(
