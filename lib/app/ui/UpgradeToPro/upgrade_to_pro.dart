@@ -29,7 +29,6 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
             ),
             onPressed: () {
               Get.back();
-              Get.toNamed(Routes.travelPlanningPage);
             },
           ),
         ],

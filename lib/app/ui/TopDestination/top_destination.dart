@@ -59,7 +59,7 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
+                child: Column(
                   children: [
                     Container(
                       padding: const EdgeInsets.only(right: 10),
@@ -72,8 +72,8 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           SizedBox(
-                            height: 50,
-                            width: Get.width / 2.4,
+                            height: 45,
+                            width: Get.width - 29,
                             child: TypeAheadField(
                               debounceDuration:
                                   const Duration(microseconds: 10),
@@ -138,10 +138,10 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(height: 10),
                     SizedBox(
                       height: 50,
-                      width: Get.width / 2.2,
+                      width: Get.width - 10,
                       child: TextFormField(
                         style:
                             const TextStyle(color: kPrimaryColor, fontSize: 15),
@@ -187,7 +187,7 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
                 ),
               ),
               SizedBox(
-                height: Get.height - 153,
+                height: Get.height - 213,
                 width: Get.width,
                 child: AnimationLimiter(
                   child: ListView.builder(
@@ -231,7 +231,7 @@ class _TopDestinationPageState extends State<TopDestinationPage> {
                                               "assets/images/hotel.png",
                                               fit: BoxFit.cover,
                                               width: Get.width,
-                                              height: 220,
+                                              height: 200,
                                             ),
                                             const Positioned(
                                                 top: 19,

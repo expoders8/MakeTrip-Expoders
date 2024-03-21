@@ -1,13 +1,12 @@
 import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:maketrip/config/constant/font_constant.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-import '../../../config/constant/color_constant.dart';
-import '../widgets/like_button.dart';
+import '../../routes/app_pages.dart';
 import '../widgets/statistic_widget.dart';
+import '../../../config/constant/color_constant.dart';
 
 class EventsPage extends StatefulWidget {
   const EventsPage({super.key});
@@ -17,6 +16,11 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
+  var userImage = [
+    "assets/images/Ellipse1.png",
+    "assets/images/Ellipse2.png",
+    "assets/images/Ellipse3.png"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +146,7 @@ class _EventsPageState extends State<EventsPage> {
                               duration: const Duration(milliseconds: 2500),
                               child: GestureDetector(
                                 onTap: () {
-                                  // Get.toNamed(Routes.tripDetailsPage);
+                                  Get.toNamed(Routes.eventDetailsPage);
                                 },
                                 child: Card(
                                   elevation: 6,
@@ -390,13 +394,49 @@ class _EventsPageState extends State<EventsPage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            const Text(
-                                              "+38 more participated",
-                                              style: TextStyle(
-                                                  color: kTextDiscriptionColor,
-                                                  fontFamily:
-                                                      kCircularStdNormal,
-                                                  fontSize: 11),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 15.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  for (int i = 0;
+                                                      i < userImage.length;
+                                                      i++)
+                                                    Align(
+                                                      widthFactor: 0.6,
+                                                      child: ClipOval(
+                                                        child: Image.asset(
+                                                          userImage[i],
+                                                          width: 41,
+                                                          height: 41,
+                                                          errorBuilder: (context,
+                                                                  error,
+                                                                  stackTrace) =>
+                                                              Image.asset(
+                                                            "assets/images/blank_profile.png",
+                                                            fit: BoxFit.fill,
+                                                          ),
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ],
+                                              ),
+                                            ),
+                                            const Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 20.0),
+                                              child: Text(
+                                                "+38 more participated",
+                                                style: TextStyle(
+                                                    color:
+                                                        kTextDiscriptionColor,
+                                                    fontFamily:
+                                                        kCircularStdNormal,
+                                                    fontSize: 11),
+                                              ),
                                             ),
                                             Container(
                                               width: 60,

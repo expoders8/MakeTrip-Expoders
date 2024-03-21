@@ -32,7 +32,14 @@ class TripService {
       if (response.statusCode == 200) {
         // var decodedUser = jsonDecode(response.body);
         Get.back();
-        Get.to(() => TravelPlanningPage(city: city, dayDetails: response.body));
+        Get.to(() => TravelPlanningPage(
+              city: city,
+              days: days,
+              kind: kind,
+              budget: budget,
+              transportation: transportation,
+              dayDetails: response.body,
+            ));
       } else {
         // LoaderX.hide();
         SnackbarUtils.showErrorSnackbar("Server Error",

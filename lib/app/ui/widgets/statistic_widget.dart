@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:maketrip/app/ui/widgets/bookmark_button.dart';
 import 'package:maketrip/app/ui/widgets/like_button.dart';
 import 'package:maketrip/app/ui/widgets/seprator_widget.dart';

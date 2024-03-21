@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:maketrip/app/ui/home/home.dart';
 
 import '../../../config/constant/font_constant.dart';
 import '../../../config/constant/color_constant.dart';
@@ -11,8 +10,19 @@ import '../../routes/app_pages.dart';
 
 class TravelPlanningPage extends StatefulWidget {
   final String? city;
+  final String? days;
+  final String? kind;
+  final String? budget;
+  final String? transportation;
   final String? dayDetails;
-  const TravelPlanningPage({super.key, this.city = "London", this.dayDetails});
+  const TravelPlanningPage(
+      {super.key,
+      this.city = "London",
+      this.dayDetails,
+      this.days,
+      this.kind,
+      this.budget,
+      this.transportation});
 
   @override
   State<TravelPlanningPage> createState() => _TravelPlanningPageState();
@@ -20,61 +30,12 @@ class TravelPlanningPage extends StatefulWidget {
 
 class _TravelPlanningPageState extends State<TravelPlanningPage> {
   @override
-  void initState() {
-    // var data = widget.dayDetails;
-    // parseActivities(widget.dayDetails.toString());
-    super.initState();
-  }
-
-  // Map<String, List<Activity>> parseActivities(String responseBody) {
-  //   Map<String, List<Activity>> activitiesMap = {};
-
-  //   List<String> lines = responseBody.split('\n');
-  //   lines.forEach((line) {
-  //     List<String> parts = line.split('|');
-  //     if (parts.length == 5) {
-  //       String day = parts[0];
-  //       Activity activity = Activity(
-  //         day: day,
-  //         time: parts[1],
-  //         location: parts[2],
-  //         description: parts[3],
-  //         cost: parts[4],
-  //       );
-  //       if (!activitiesMap.containsKey(day)) {
-  //         activitiesMap[day] = [];
-  //       }
-  //       activitiesMap[day]!.add(activity);
-  //     }
-  //   });
-
-  //   return activitiesMap;
-  // }
-  // List<Activity> parseActivities(String responseBody) {
-  //   List<Activity> activities = [];
-  //   List<String> lines = responseBody.split('\n');
-  //   lines.forEach((line) {
-  //     List<String> parts = line.split('|');
-  //     if (parts.length == 5) {
-  //       activities.add(Activity(
-  //         day: parts[0],
-  //         time: parts[1],
-  //         location: parts[2],
-  //         description: parts[3],
-  //         cost: parts[4],
-  //       ));
-  //     }
-  //   });
-  //   return activities;
-  // }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     Map<String, List<Activity>> activitiesMap = {};
 
     List<String> lines = widget.dayDetails!.split('\n');
-    lines.forEach((line) {
+    for (var line in lines) {
       List<String> parts = line.split('|');
       if (parts.length == 5) {
         String day = parts[0];
@@ -90,7 +51,7 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
         }
         activitiesMap[day]!.add(activity);
       }
-    });
+    }
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 15,
@@ -184,159 +145,36 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       itemCount: activitiesMap.length,
                       itemBuilder: (context, index) {
                         String day = activitiesMap.keys.elementAt(index);
-                        List<Activity>? activities = activitiesMap[day];
-                        return SizedBox(
-                          child: Column(
-                            children: [
-                              Card(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        day,
-                                        style: const TextStyle(
-                                            color: ksecondaryColor,
-                                            fontSize: 15,
-                                            fontFamily: kFuturaPTBook),
-                                      ),
+                        var activities = activitiesMap[day];
+                        return Column(
+                          children: [
+                            Card(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      day,
+                                      style: const TextStyle(
+                                          color: ksecondaryColor,
+                                          fontSize: 15,
+                                          fontFamily: kFuturaPTBook),
                                     ),
-                                    SizedBox(
-                                      height: 500,
-                                      child: ListView.builder(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        itemCount: activities!.length,
-                                        itemBuilder: (context, index) {
-                                          var tripPlan = activities[index];
-                                          return Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const SizedBox(height: 5),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8.0),
-                                                child: Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Image.asset(
-                                                        "assets/icons/timer.png"),
-                                                    Text(
-                                                      "${tripPlan.time} - ${tripPlan.location}",
-                                                      style: const TextStyle(
-                                                        color: kPrimaryColor,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              const SizedBox(height: 5),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 12, right: 5),
-                                                child: Text(
-                                                  tripPlan.description,
-                                                  style: const TextStyle(
-                                                    color: ksecondaryColor,
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(height: 5),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 8.0),
-                                                    child: Row(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Image.asset(
-                                                            "assets/icons/Frame1701.png"),
-                                                        Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            const Text(
-                                                              "Budget",
-                                                              style: TextStyle(
-                                                                color:
-                                                                    kPrimaryColor,
-                                                                fontSize: 14,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              tripPlan.cost,
-                                                              style:
-                                                                  const TextStyle(
-                                                                color:
-                                                                    ksecondaryColor,
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      // bottomSheetForDetails();
-                                                      Get.toNamed(Routes
-                                                          .topDestinationPage);
-                                                    },
-                                                    child: const Padding(
-                                                      padding: EdgeInsets.only(
-                                                          right: 18.0),
-                                                      child: Text(
-                                                        "View Details",
-                                                        style: TextStyle(
-                                                          color: kPrimaryColor,
-                                                          fontSize: 14,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .underline,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  buildTripPlans(activities!),
+                                ],
                               ),
-                              activitiesMap.length - 1 == index
-                                  ? Container()
-                                  : Container(
-                                      decoration: const BoxDecoration(
-                                          color: kPrimaryColor),
-                                      width: 1.2,
-                                      height: 60,
-                                    ),
-                            ],
-                          ),
+                            ),
+                            activitiesMap.length - 1 == index
+                                ? Container()
+                                : Container(
+                                    decoration: const BoxDecoration(
+                                        color: kPrimaryColor),
+                                    width: 0.7,
+                                    height: 60,
+                                  ),
+                          ],
                         );
                       },
                     ),
@@ -587,7 +425,13 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
     );
   }
 
-  bottomSheetForDetails() {
+  bottomSheetForDetails(
+    String city,
+    String days,
+    String budget,
+    String kind,
+    String transport,
+  ) {
     return showModalBottomSheet<dynamic>(
       context: context,
       backgroundColor: kBackGroundColor,
@@ -622,9 +466,10 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 10),
-                      const Text(
-                        "This itinerary is designed for a city explorer person visiting jabalpur for 10 days",
-                        style: TextStyle(color: ksecondaryColor, fontSize: 16),
+                      Text(
+                        "This itinerary is designed for a city explorer person visiting jabalpur for $days days",
+                        style: const TextStyle(
+                            color: ksecondaryColor, fontSize: 16),
                       ),
                       const SizedBox(height: 25),
                       Row(
@@ -643,10 +488,10 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              const Column(
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "City",
                                     style: TextStyle(
                                       color: kPrimaryColor,
@@ -654,8 +499,8 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                     ),
                                   ),
                                   Text(
-                                    "London",
-                                    style: TextStyle(
+                                    city,
+                                    style: const TextStyle(
                                       color: ksecondaryColor,
                                       fontSize: 15,
                                     ),
@@ -678,10 +523,10 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              const Column(
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Kind of Traveler",
                                     style: TextStyle(
                                       color: kPrimaryColor,
@@ -689,8 +534,8 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                     ),
                                   ),
                                   Text(
-                                    "London",
-                                    style: TextStyle(
+                                    kind,
+                                    style: const TextStyle(
                                       color: ksecondaryColor,
                                       fontSize: 15,
                                     ),
@@ -718,10 +563,10 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              const Column(
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Days",
                                     style: TextStyle(
                                       color: kPrimaryColor,
@@ -729,8 +574,8 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                     ),
                                   ),
                                   Text(
-                                    "07 Days",
-                                    style: TextStyle(
+                                    "$days Days",
+                                    style: const TextStyle(
                                       color: ksecondaryColor,
                                       fontSize: 15,
                                     ),
@@ -754,10 +599,10 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              const Column(
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Transport",
                                     style: TextStyle(
                                       color: kPrimaryColor,
@@ -765,8 +610,8 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                     ),
                                   ),
                                   Text(
-                                    "Car",
-                                    style: TextStyle(
+                                    transport,
+                                    style: const TextStyle(
                                       color: ksecondaryColor,
                                       fontSize: 15,
                                     ),
@@ -791,10 +636,10 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             ),
                           ),
                           const SizedBox(width: 10),
-                          const Column(
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Budget",
                                 style: TextStyle(
                                   color: kPrimaryColor,
@@ -802,8 +647,8 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                                 ),
                               ),
                               Text(
-                                "\$500 USD",
-                                style: TextStyle(
+                                "\$$budget USD",
+                                style: const TextStyle(
                                   color: ksecondaryColor,
                                   fontSize: 15,
                                 ),
@@ -813,17 +658,29 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        height: 50,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: kPrimaryColor, width: 1)),
-                        child: const Center(
-                          child: Text(
-                            "Update Details",
-                            style:
-                                TextStyle(color: kPrimaryColor, fontSize: 16),
+                      GestureDetector(
+                        onTap: () {
+                          Get.offAll(() => HomePage(
+                                city: city,
+                                budget: budget,
+                                days: days,
+                                kind: kind,
+                                transport: transport,
+                              ));
+                        },
+                        child: Container(
+                          height: 50,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border:
+                                  Border.all(color: kPrimaryColor, width: 1)),
+                          child: const Center(
+                            child: Text(
+                              "Update Details",
+                              style:
+                                  TextStyle(color: kPrimaryColor, fontSize: 16),
+                            ),
                           ),
                         ),
                       )
@@ -875,34 +732,69 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                       const SizedBox(height: 15),
                       Row(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                border: Border.all(
-                                    color: kPrimaryColor, width: 0.3)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset("assets/icons/PDFHD.png",
-                                  width: 22, height: 22),
+                          CupertinoButton(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
+                            onPressed: () {
+                              Get.back();
+                              // bottomSheetForUpgradeToPro();
+                              Get.toNamed(Routes.upgradeToProPage);
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(35),
+                                      border: Border.all(
+                                          color: kPrimaryColor, width: 0.3)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset("assets/icons/PDFHD.png",
+                                        width: 22, height: 22),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                const Text(
+                                  "PDF",
+                                  style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontFamily: kCircularStdMedium,
+                                      fontSize: 13),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(width: 10),
-                          const Text("PDF"),
                           const SizedBox(width: 70),
                           const SizedBox(width: 15),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                border: Border.all(
-                                    color: kPrimaryColor, width: 0.3)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset("assets/icons/PPTHD.png",
-                                  width: 26, height: 26),
+                          CupertinoButton(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
+                            onPressed: () {
+                              Get.back();
+                              Get.toNamed(Routes.upgradeToProPage);
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(35),
+                                      border: Border.all(
+                                          color: kPrimaryColor, width: 0.3)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset("assets/icons/PPTHD.png",
+                                        width: 26, height: 26),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                const Text(
+                                  "PPT",
+                                  style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontFamily: kCircularStdMedium,
+                                      fontSize: 13),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(width: 10),
-                          const Text("PPT"),
                         ],
                       )
                     ],
@@ -951,45 +843,67 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
                             fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                border: Border.all(
-                                    color: kPrimaryColor, width: 0.3)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset("assets/icons/PDFHD.png",
-                                  width: 22, height: 22),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          const Text(
-                              "Books Things To Do, Attractions, and Tours")
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                border: Border.all(
-                                    color: kPrimaryColor, width: 0.3)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(
-                                "assets/icons/MYTRIP.png",
-                                width: 22,
-                                height: 22,
+                      CupertinoButton(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(35),
+                                    border: Border.all(
+                                        color: kPrimaryColor, width: 0.3)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset("assets/icons/PDFHD.png",
+                                      width: 22, height: 22),
+                                ),
                               ),
-                            ),
+                              const SizedBox(width: 10),
+                              const Text(
+                                "Books Things To Do, Attractions, and Tours",
+                                style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontFamily: kCircularStdMedium,
+                                    fontSize: 13),
+                              )
+                            ],
                           ),
-                          const SizedBox(width: 10),
-                          const Text("Cheap Flights With Cashback")
-                        ],
-                      ),
+                          onPressed: () {
+                            Get.back();
+                            Get.toNamed(Routes.topDestinationPage);
+                          }),
+                      CupertinoButton(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(35),
+                                    border: Border.all(
+                                        color: kPrimaryColor, width: 0.3)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                    "assets/icons/MYTRIP.png",
+                                    width: 22,
+                                    height: 22,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              const Text(
+                                "Cheap Flights With Cashback",
+                                style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontFamily: kCircularStdMedium,
+                                    fontSize: 13),
+                              )
+                            ],
+                          ),
+                          onPressed: () {
+                            Get.back();
+                            Get.toNamed(Routes.eventsPage);
+                          }),
                     ],
                   ),
                 ),
@@ -998,6 +912,135 @@ class _TravelPlanningPageState extends State<TravelPlanningPage> {
           ],
         );
       },
+    );
+  }
+
+  Widget buildTripPlans(List<Activity> tripPlans) {
+    return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: tripPlans.map((tripPlan) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/icons/timer.png"),
+                      Text(
+                        "${tripPlan.time} - ${tripPlan.location}",
+                        style: const TextStyle(
+                          color: kPrimaryColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12, right: 5),
+                  child: Text(
+                    tripPlan.description,
+                    style: const TextStyle(
+                      color: ksecondaryColor,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset("assets/icons/Frame1701.png"),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Budget",
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 113,
+                                child: Text(
+                                  tripPlan.cost.toString(),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: ksecondaryColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.topDestinationPage);
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.only(right: 18.0),
+                            child: Text(
+                              "Suggestion",
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 14,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            bottomSheetForDetails(
+                                widget.city.toString(),
+                                widget.days.toString(),
+                                widget.budget.toString(),
+                                widget.kind.toString(),
+                                widget.transportation.toString());
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.only(right: 18.0),
+                            child: Text(
+                              "View Details",
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 14,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }

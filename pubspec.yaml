@@ -45,6 +45,7 @@ dependencies:
   google_sign_in: ^6.2.1
   firebase_auth: ^4.6.2
   firebase_core: ^2.14.0
+  flutter_datetime_picker_bdaya: ^3.0.2
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../config/constant/color_constant.dart';
-import '../../../config/constant/font_constant.dart';
 
 // ignore: must_be_immutable
 class LikeButton extends StatefulWidget {
