@@ -1,48 +1,40 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
-// import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:lottie/lottie.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 
-// import '../constant/color_constant.dart';
+class LoaderX {
+  static show(BuildContext context, width, height) {
+    return Loader.show(context,
+        progressIndicator: SpinnerX(
+          spinnerHeight: height,
+          spinnerWidth: width,
+        ),
+        overlayColor: Colors.white30);
+  }
 
-// class LoaderX {
-//   static show(BuildContext context, size) {
-//     return Loader.show(context,
-//         progressIndicator: SpinnerX(
-//           spinnerSize: size,
-//         ),
-//         overlayColor: Colors.white30);
-//   }
+  static hide() {
+    return Loader.hide();
+  }
+}
 
-//   static hide() {
-//     return Loader.hide();
-//   }
-// }
+class SpinnerX extends StatelessWidget {
+  final double spinnerWidth;
+  final double spinnerHeight;
+  const SpinnerX(
+      {Key? key, required this.spinnerWidth, required this.spinnerHeight})
+      : super(key: key);
 
-// class SpinnerX extends StatelessWidget {
-//   final double spinnerSize;
-//   const SpinnerX({Key? key, required this.spinnerSize}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return WillPopScope(
-//       onWillPop: () => Future.value(false),
-//       child: Center(
-//         child: SpinKitSpinningLines(
-//           size: spinnerSize,
-//           color: kBlackColor,
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class LoaderUtils {
-//   static showLoader() {
-//     return const Center(
-//       child: SpinKitSpinningLines(
-//         size: 50.0,
-//         color: kBlackColor,
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop) {
+        Future.value(false);
+      },
+      child: Center(
+        child: Lottie.asset('assets/circle_loader.json',
+            height: spinnerHeight, width: spinnerWidth),
+      ),
+    );
+  }
+}

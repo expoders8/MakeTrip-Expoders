@@ -8,6 +8,7 @@ import '../ui/home/home.dart';
 import '../ui/Auth/Login/login.dart';
 import '../ui/TopDestination/top_destination.dart';
 import '../ui/Travelplanning/travel_planning.dart';
+import '../ui/widgets/inapp_webview_widget.dart';
 
 part 'app_routes.dart';
 
@@ -48,6 +49,10 @@ class AppPages {
     GetPage(
       name: _Paths.eventDetailsPage,
       page: () => const EventDetailsPage(),
+    ),
+    GetPage(
+      name: _Paths.inAppWebViewWidget,
+      page: () => const InAppWebViewWidget(),
     ),
   ];
 }

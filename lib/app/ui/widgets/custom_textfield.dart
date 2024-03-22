@@ -76,7 +76,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         hintText: widget.hintText,
         filled: true,
-        fillColor: kWhiteColor,
+        fillColor: widget.name == 'key' ? kTransparentColor : kWhiteColor,
         contentPadding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
         hintStyle: const TextStyle(color: kGreyColor),
         labelStyle: const TextStyle(color: kBlackColor),
@@ -105,19 +105,29 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         //         },
         //       )
         //     : null,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
+        border: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
             Radius.circular(9.0),
           ),
-          borderSide: BorderSide(color: kPrimaryColor),
+          borderSide: BorderSide(
+              color: widget.name == 'key'
+                  ? const Color(0xFFAFAEAE)
+                  : kPrimaryColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(9.0),
-          borderSide: const BorderSide(color: kPrimaryColor, width: 1.0),
+          borderSide: BorderSide(
+              color: widget.name == 'key'
+                  ? const Color(0xFFAFAEAE)
+                  : kPrimaryColor,
+              width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(9.0),
-          borderSide: const BorderSide(color: kPrimaryColor),
+          borderSide: BorderSide(
+              color: widget.name == 'key'
+                  ? const Color(0xFFAFAEAE)
+                  : kPrimaryColor),
         ),
       ),
       maxLines: widget.maxLines,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:maketrip/config/constant/color_constant.dart';
 import 'package:maketrip/config/constant/font_constant.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../routes/app_pages.dart';
 
@@ -222,8 +223,8 @@ class _UpgradeToProPageState extends State<UpgradeToProPage> {
                         ),
                         const SizedBox(height: 15),
                         GestureDetector(
-                          onTap: () {
-                            // bottomSheetForUpgradeToPro();
+                          onTap: () async {
+                            Get.toNamed(Routes.inAppWebViewWidget);
                           },
                           child: Container(
                             height: 50,
